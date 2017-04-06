@@ -15,5 +15,5 @@ class CountryListSerializer(ModelSerializer):
 class CountrySerializer(GeoFeatureModelSerializer):
     class Meta:
         model = WorldBorder
-        fields = ('id', 'name', 'iso3')
+        fields = ('id', 'name', 'iso3', 'lat','lon')
         geo_field = "mpoly"
