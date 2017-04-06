@@ -1,10 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Historical maps</title>
+    <script src="{% static "leaflet/dist/leaflet.js" %}"></script>
+    <link rel="stylesheet" href="{% static "leaflet/dist/leaflet.css" %}">
+
 </head>
 <body>
+<div id="map" style="width: 800px; height: 600px;">
+
+</div>
+
+{% block script %}
+{% endblock %}
 
 </body>
 </html>
