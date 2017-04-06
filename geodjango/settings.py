@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/gstatic/'
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -126,7 +126,7 @@ STATICFILES_FINDERS = [
     'npm.finders.NpmFinder'
 ]
 
-STATIC_ROOT = "static"
+STATIC_ROOT = "gstatic"
 
 NPM_FILE_PATTERNS = {
     'leaflet': ['dist/*'],

@@ -141,4 +141,4 @@ fabric.properties
 
 world/data/*
 node_modules
-static
+gstatic

@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% block script %}
     <script>
-        var map;
+        var map = new L.Map('map');
         var ajaxRequest;
         var plotlist;
         var plotlayers = [];
 
         function initmap() {
-            // set up the map
-            map = new L.Map('map');
 
             // create the tile layer with correct attribution
             var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
