@@ -1,0 +1,23 @@
+{
+  "name": "histmap",
+  "version": "0.0.1",
+  "description": "Maps of historical territories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skeeph/histmap.git"
+  },
+  "keywords": [
+    "django",
+    "map",
+    "leaflet"
+  ],
+  "dependencies": {
+    "leaflet":"~1.0.3"
+  },
+  "author": "Khabib Murtuzaaliev<khabib.murtuzaaliev@gmail.com>",
+  "license": "CC-BY-4.0"
+}

@@ -140,3 +140,5 @@ crashlytics-build.properties
 fabric.properties
 
 world/data/*
+node_modules
+static

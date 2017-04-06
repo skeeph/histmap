@@ -117,3 +117,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'npm.finders.NpmFinder'
+]
+
+STATIC_ROOT = "static"
+
+NPM_FILE_PATTERNS = {
+    'leaflet': ['dist/*'],
+
+}
