@@ -16,8 +16,8 @@ class WorldBorder(models.Model):
     subregion = models.IntegerField('Sub-Region Code')
     lon = models.FloatField()
     lat = models.FloatField()
-    startYear = models.DateField(default=date(1000, 1, 1))
-    endYear = models.DateField(null=True)
+    startyear = models.DateField(default=date(1000, 1, 1))
+    endyear = models.DateField(null=True)
 
     # GeoDjango-specific: a geometry field (MultiPolygonField)
     mpoly = models.MultiPolygonField()
