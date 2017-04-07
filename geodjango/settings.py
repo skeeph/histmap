@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'rest_framework',
     'rest_framework_gis',
-    'bootstrap3',
     'world',
 ]
 
@@ -131,6 +130,7 @@ STATIC_ROOT = "gstatic"
 
 NPM_FILE_PATTERNS = {
     'leaflet': ['dist/*'],
+    'bootstrap': ['dist/*']
 
 }
 

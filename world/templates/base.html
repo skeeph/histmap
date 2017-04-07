@@ -1,5 +1,5 @@
 {% load static %}
-{% load bootstrap3 %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +7,25 @@
     <title>Historical maps</title>
     <script src="{% static "leaflet/dist/leaflet.js" %}"></script>
     <link rel="stylesheet" href="{% static "leaflet/dist/leaflet.css" %}">
-    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}">
+
 </head>
 <body>
-{% bootstrap_messages %}
-<div id="map" style="width: 800px; height: 600px;">
 
+{% block before_map %}
+{% endblock %}
+<div class="row">
+    <div class="col-md-offset-2 col-md8">
+        <div id="map" style="width: 800px; height: 600px;">
+
+        </div>
+    </div>
 </div>
 {% block content %}
 {% endblock %}
 {% block script %}
 {% endblock %}
 <script src="{% static "map.js" %}"></script>
-{% bootstrap_javascript %}
+<!--<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>-->
 </body>
 </html>
