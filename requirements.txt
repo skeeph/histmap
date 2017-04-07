@@ -3,3 +3,4 @@ django-npm
 psycopg2
 djangorestframework
 djangorestframework-gis
+django-bootstrap3

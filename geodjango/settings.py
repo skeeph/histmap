@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'rest_framework',
     'rest_framework_gis',
+    'bootstrap3',
     'world',
 ]
 
@@ -137,5 +138,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser',
     ],
-    #'PAGE_SIZE': 50
+    'PAGE_SIZE': 5
 }

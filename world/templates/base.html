@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,10 @@
     <title>Historical maps</title>
     <script src="{% static "leaflet/dist/leaflet.js" %}"></script>
     <link rel="stylesheet" href="{% static "leaflet/dist/leaflet.css" %}">
-
+    {% bootstrap_css %}
 </head>
 <body>
+{% bootstrap_messages %}
 <div id="map" style="width: 800px; height: 600px;">
 
 </div>
@@ -17,5 +19,6 @@
 {% block script %}
 {% endblock %}
 <script src="{% static "map.js" %}"></script>
+{% bootstrap_javascript %}
 </body>
 </html>
