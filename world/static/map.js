@@ -1,3 +1,23 @@
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function style(feature) {
+    return {
+        fillColor: getRandomColor(),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
 function getCountriesList() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", API("countries"), true);
@@ -9,7 +29,7 @@ function getCountriesList() {
 }
 
 function drawBorders(c) {
-    var plg = L.geoJson(c).addTo(map);
+    var plg = L.geoJson(c,{style: style}).addTo(map);
     plg.bindPopup(c.properties.name);
 }
 
