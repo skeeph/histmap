@@ -1,3 +1,22 @@
+var map = new L.Map('map');
+var ajaxRequest;
+var plotlist;
+var plotlayers = [];
+
+function initmap() {
+
+    // create the tile layer with correct attribution
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    //var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, {minZoom: 1, maxZoom: 100});
+
+    // start the map in South-East England
+    map.setView(new L.LatLng(51.3, 0.7), 1);
+    map.addLayer(osm);
+}
+
+initmap();
+
 /**
  * Генерирует случайный цвет в формате rgb
  * @return {string} Цвет
