@@ -53,9 +53,14 @@ function onEachFeature(feature, layer) {
     });
 }
 
-function getCountriesList() {
+function getCountriesList(url) {
+    if (!url) {
+        url = API("countries_geo");
+    }
+
+    console.log(url);
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", API("countries_geo"), true);
+    xhr.open("GET", url, true);
     xhr.send();
     xhr.onload = function () {
         var countries = JSON.parse(xhr.responseText);
@@ -63,21 +68,15 @@ function getCountriesList() {
     }
 }
 
-// function drawBorders(c) {
-//     var plg = L.geoJson(c, {
-//         style: style,
-//         onEachFeature: onEachFeature
-//     }).addTo(map);
-//     //plg.bindPopup(c.properties.name);
-// }
-
 
 function handleCountries(countries) {
     L.geoJson(countries, {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(map);
-
+    if (countries.next) {
+        getCountriesList(countries.next);
+    }
 }
 getCountriesList();
 
