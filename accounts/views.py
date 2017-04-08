@@ -23,7 +23,6 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data["password"])
             new_user.save()
-            g.user_set.add(new_user)
             user_profile = Profile.objects.create(user=new_user, slug=slugify('{f} {l}'.format(f=new_user.first_name,
                                                                                                l=new_user.last_name),
                                                                               allow_unicode=True))
