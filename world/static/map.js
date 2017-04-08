@@ -114,4 +114,4 @@ yearInput.addEventListener('change', function (e) {
 });
 
 initmap();
-getCountriesList(null,yearInput.value);
+getCountriesList(null, yearInput.value);

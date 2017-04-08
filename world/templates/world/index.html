@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block before_map %}
+{% block content %}
     <div class="row">
         <div class="col-md-offset-2">
             {% for field in form %}
@@ -13,4 +13,11 @@
             {% endfor %}
         </div>
     </div>
+    <div class="row">
+    <div class="col-md-offset-2 col-md8">
+        <div id="map" style="width: 800px; height: 600px;">
+
+        </div>
+    </div>
+</div>
 {% endblock %}
