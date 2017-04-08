@@ -50,5 +50,5 @@ urlpatterns = [
     # # Register
     # url(r'register/$', register, name='register'),
     # # url(r'edit/$', views.edit, name='edit'),
-    # url(r'profile/$', profile, name='profile')
+    url(r'profile/$', profile, name='profile')
 ]
