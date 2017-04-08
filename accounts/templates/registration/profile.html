@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+    {{ profile.user.first_name }} {{ profile.user.last_name }}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-1 offset-md-2">{{ profile.user.first_name }}</div>
+        <div class="col-md-1">{{ profile.user.last_name }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 offset-md-2">{{ profile.user.email }}</div>
+    </div>
+{% endblock %}
+
+{% block domready %}
+    $('[data-toggle="tooltip"]').tooltip();
+{% endblock %}
