@@ -22,7 +22,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGIN_REDIRECT_URL = reverse_lazy('world:map')
+LOGIN_REDIRECT_URL = reverse_lazy('users:profile')
 LOGIN_URL = reverse_lazy('account_login')
 LOGOUT_URL = reverse_lazy('account_logout')
 
