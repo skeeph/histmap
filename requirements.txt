@@ -5,3 +5,4 @@ djangorestframework
 djangorestframework-gis
 django-bootstrap3
 django-split-settings>=0.2.5
+django-allauth>=0.32.0

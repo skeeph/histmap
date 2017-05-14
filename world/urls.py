@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
-from .views import world
+from .views import world, new
 
 urlpatterns = [
-    url(r'^$', world, name='index'),
+    url('new', new, name="new_object"),
+    url(r'^$', world, name='map'),
 
 ]
