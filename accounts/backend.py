@@ -13,6 +13,8 @@ class Auth0Backend(ModelBackend):
 
     def authenticate(self, **kwargs):
         user_id = kwargs.get('sub', None)
+        first_name = kwargs.get('given_name', "")
+        last_name = kwargs.get('family_name', "")
 
         if not user_id:
             raise ValueError(_('sub can\'t be blank!'))
@@ -21,7 +23,8 @@ class Auth0Backend(ModelBackend):
         try:
             return UserModel.objects.get(username=username)
         except UserModel.DoesNotExist:
-            user = UserModel.objects.create(username=username)
+            user = UserModel.objects.create(username=username, first_name=first_name, last_name = last_name)
+            user.save()
             p = Profile.objects.create(user=user, slug=user.username)
             p.save()
             return user
