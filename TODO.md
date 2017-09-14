@@ -1,3 +1,4 @@
 1. ~~Auth0~~
 2. New country moderation
-2. .env files
+2. ~~.env files~~
+1. Login next
