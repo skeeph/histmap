@@ -1,9 +1,8 @@
 from django.conf.urls import url
-from django.contrib.auth.views import *
-
-from .forms import *
 from .views import *
 
 urlpatterns = [
-    url(r'profile', profile, name='profile')
+    url(r'profile', profile, name='profile'),
+    url(r'login', login, name='login'),
+    url(r'callback', callback, name='callback'),
 ]

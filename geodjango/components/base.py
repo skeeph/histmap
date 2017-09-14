@@ -21,12 +21,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.gis',
     'rest_framework',
     'rest_framework_gis',
     'world',
     'accounts',
-    'django.contrib.sites'
 ]
 
 ROOT_URLCONF = 'geodjango.urls'

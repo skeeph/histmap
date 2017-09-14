@@ -7,7 +7,7 @@ class Profile(models.Model):
     slug = models.SlugField(allow_unicode=True, unique=True)
 
     def __str__(self):
-        return ('%s' % self.user.username).encode('utf-8', errors='replace')
+        return u'{u}\'s profile'.format(u=self.user.username)
 
     def __unicode__(self):
         return u'{u}\'s profile'.format(u=self.user.username)
