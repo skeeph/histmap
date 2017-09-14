@@ -8,14 +8,15 @@
     <script src="{% static "leaflet/dist/leaflet.js" %}"></script>
     <link rel="stylesheet" href="{% static "leaflet/dist/leaflet.css" %}">
     <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}">
-
+    {% block head %}
+    
+    {% endblock %}
 </head>
 <body>
 {% block content %}
 {% endblock %}
 {% block script %}
 {% endblock %}
-<script src="{% static "map.js" %}"></script>
 <!--<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>-->
 </body>
 </html>

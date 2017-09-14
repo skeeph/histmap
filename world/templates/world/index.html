@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block content %}
     <div class="row">
@@ -20,4 +22,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static "map.js" %}"></script>
 {% endblock %}
