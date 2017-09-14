@@ -11,6 +11,11 @@
     <div class="row">
         <div class="col-md-1 offset-md-2">{{ profile.user.email }}</div>
     </div>
+    <div class="row">
+    <div class="col-md-1">
+        <a href="{% url "users:logout" %}">Logout</a>
+    </div>
+    </div>
 {% endblock %}
 
 {% block domready %}

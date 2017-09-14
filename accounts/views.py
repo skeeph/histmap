@@ -1,5 +1,7 @@
+from urllib.parse import urlparse
+
 from auth0.v3.authentication import GetToken, Users
-from django.contrib.auth import authenticate, login as do_login
+from django.contrib.auth import authenticate, login as do_login, logout as do_logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -41,8 +43,9 @@ def login(request):
     })
 
 
-# def logout(request):
-#     request.session.clear()
-#     parsed_base_url = urlparse(AUTH0_CALLBACK_URL)
-#     base_url = parsed_base_url.scheme + '://' + parsed_base_url.netloc
-#     return redirect('https://%s/v2/logout?returnTo=%s&client_id=%s' % (AUTH0_DOMAIN, base_url, AUTH0_CLIENT_ID))
+def logout(request):
+    parsed_base_url = urlparse(AUTH0_CALLBACK_URL)
+    base_url = parsed_base_url.scheme + '://' + parsed_base_url.netloc
+    do_logout(request)
+    request.session.clear()
+    return redirect(reverse_lazy("user:login"))
