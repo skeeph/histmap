@@ -26,10 +26,7 @@ INSTALLED_APPS = [
     'rest_framework_gis',
     'world',
     'accounts',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'django.contrib.sites'
 ]
 
 ROOT_URLCONF = 'geodjango.urls'
