@@ -24,6 +24,8 @@ class New(views.View):
             lat, lon = new_country.mpoly.coords[0][0][0]
             new_country.lon = lon
             new_country.lat = lat
+            new_country.creator = request.user.profile
+            new_country.published = False
             new_country.save()
             return redirect("world:map")
         return render(request, 'world/new.html', {'form': form})

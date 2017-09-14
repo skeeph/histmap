@@ -1,8 +1,12 @@
 from django.contrib.gis.db import models
 from datetime import date
 
+from accounts.models import Profile
+
 
 class WorldBorder(models.Model):
+    creator = models.ForeignKey(Profile, related_name="countries")
+    published = models.BooleanField()
     name = models.CharField(max_length=50)
 
     lon = models.FloatField()
