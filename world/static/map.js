@@ -2,6 +2,8 @@ var map;
 var ajaxRequest;
 var plotlist;
 var layers = [];
+var w;
+
 
 function initmap() {
     map = new L.Map('map');
@@ -13,30 +15,6 @@ function initmap() {
     // start the map in South-East England
     map.setView(new L.LatLng(51.3, 0.7), 1);
     map.addLayer(osm);
-}
-
-/**
- * Удаляет все объекты с карты
- */
-function clearMap() {
-    for (var i = 0; i < layers.length; i++) {
-        layers[i].remove();
-    }
-    layers = [];
-}
-
-
-/**
-     * Генерирует случайный цвет в формате rgb
-     * @return {string} Цвет
-     */
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
 }
 
 function style(feature) {
@@ -62,56 +40,57 @@ function onEachFeature(feature, layer) {
     });
 }
 
-function getCountriesList(url, year) {
-    if (!url) {
-        url = API("countries_geo",year);
+/**
+ * Генерирует случайный цвет в формате rgb
+ * @return {string} Цвет
+ */
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
     }
-    console.log(url);
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.send();
-    xhr.onload = function () {
-        var countries = JSON.parse(xhr.responseText);
-        handleCountries(countries);
-    }
+    return color;
 }
 
 
 /**
- * Отрисовка полученного массива стран и вызов функции получения следующий стран
- * @param {object} countries Geojson объекст стран
+ * Удаляет все объекты с карты
  */
-function handleCountries(countries) {
+function clearMap() {
+    for (var i = 0; i < layers.length; i++) {
+        layers[i].remove();
+    }
+    layers = [];
+}
+
+function handleWebWorker(jsonstr) {
+    var countries = JSON.parse(jsonstr);
     var c = L.geoJson(countries, {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(map);
     layers.push(c);
-    if (countries.next) {
-        getCountriesList(countries.next);
-    }
-}
-
-
-/**
- * Функция формирует адрес API
- * @param {string} query Что нужно от API
- * @param {int} year За какой год нужно получить данные
- * @return {string}
- */
-function API(query, year) {
-    var url = "http://localhost:8000/api/" + query + "/";
-    if (year) {
-        url = url + "?year=" + year;
-    }
-    return url;
 }
 
 var yearInput = document.querySelector("#year");
 yearInput.addEventListener('change', function (e) {
     clearMap();
-    getCountriesList(null, yearInput.value);
+    w.terminate();
+    w = undefined;
+    startWebWorker(yearInput.value);
 });
 
 initmap();
-getCountriesList(null, yearInput.value);
+w = new Worker('/gstatic/mapWorker.js');
+
+
+function startWebWorker(year){
+    w = new Worker('/gstatic/mapWorker.js');
+    w.postMessage(year);
+    w.onmessage = function (event) {
+        handleWebWorker(event.data)
+        console.log(event);
+    };
+}
+startWebWorker(2000);

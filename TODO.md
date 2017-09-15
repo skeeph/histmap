@@ -1,5 +1,6 @@
 1. ~~Auth0~~
 2. New country moderation
+1. ~~Web workers для получения стран~~
 3. ~~Logout~~
 2. ~~.env files~~
 1. ~~Login next~~
