@@ -44,4 +44,4 @@ def logout(request):
     base_url = parsed_base_url.scheme + '://' + parsed_base_url.netloc
     do_logout(request)
     request.session.clear()
-    return redirect(reverse_lazy("user:login"))
+    return redirect(reverse_lazy("world:map"))
