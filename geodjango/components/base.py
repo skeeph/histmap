@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 ROOT_URLCONF = 'geodjango.urls'
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
