@@ -36,11 +36,7 @@ def callback(request):
 
 
 def login(request):
-    return render(request, "registration/login.html", {
-        'AUTH0_DOMAIN': AUTH0_DOMAIN,
-        'AUTH0_CLIENT_ID': AUTH0_CLIENT_ID,
-        'AUTH0_CALLBACK_URL': AUTH0_CALLBACK_URL,
-    })
+    return render(request, "registration/login.html")
 
 
 def logout(request):
