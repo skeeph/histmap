@@ -87,7 +87,6 @@ function startWebWorker(year){
     w.postMessage(year);
     w.onmessage = function (event) {
         handleWebWorker(event.data)
-        console.log(event);
     };
 }
 startWebWorker(2000);
