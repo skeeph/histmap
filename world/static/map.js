@@ -82,9 +82,6 @@ yearInput.addEventListener('change', function (e) {
 });
 
 initmap();
-w = new Worker('/gstatic/mapWorker.js');
-
-
 function startWebWorker(year){
     w = new Worker('/gstatic/mapWorker.js');
     w.postMessage(year);

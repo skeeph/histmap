@@ -22,6 +22,8 @@ function handleCountries(countries) {
     postMessage(JSON.stringify(countries));
     if (countries.next) {
         getCountriesList(countries.next);
+    } else {
+        close();
     }
 }
 
