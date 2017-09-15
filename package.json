@@ -16,8 +16,7 @@
     "leaflet"
   ],
   "dependencies": {
-    "leaflet":"~1.0.3",
-    "bootstrap":"~3.3.7"
+    "leaflet":"~1.0.3"
   },
   "author": "Khabib Murtuzaaliev<khabib.murtuzaaliev@gmail.com>",
   "license": "CC-BY-4.0"
