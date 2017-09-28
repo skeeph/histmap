@@ -10,6 +10,7 @@ before_script:
 
 env:
     - TRAVIS: True
+    - DJANGO_SECRET: "ThisIsSecretForTravis"
 
 addons:
     postgresql: "9.5"
