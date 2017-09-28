@@ -1,9 +1,1 @@
-django
-django-npm
-psycopg2
-djangorestframework
-djangorestframework-gis
-django-bootstrap3
-django-split-settings>=0.2.5
-auth0-python
-django-dotenv
+-r requirements/base.txt
