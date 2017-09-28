@@ -8,8 +8,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from accounts.models import Profile
-from geodjango.components.auth0 import AUTH0_DOMAIN, AUTH0_CLIENT_ID, \
-    AUTH0_SECRET, AUTH0_CALLBACK_URL
+from django.conf import settings
 
 
 @login_required
@@ -29,10 +28,10 @@ def callback(request):
     Auth0 callback view
     """
     code = request.GET['code']
-    get_token = GetToken(AUTH0_DOMAIN)
-    auth0_users = Users(AUTH0_DOMAIN)
-    token = get_token.authorization_code(AUTH0_CLIENT_ID,
-                                         AUTH0_SECRET, code, AUTH0_CALLBACK_URL)
+    get_token = GetToken(settings.AUTH0_DOMAIN)
+    auth0_users = Users(settings.AUTH0_DOMAIN)
+    token = get_token.authorization_code(settings.AUTH0_CLIENT_ID,
+                                         settings.AUTH0_SECRET, code, settings.AUTH0_CALLBACK_URL)
     user_info = auth0_users.userinfo(token['access_token'])
     uinfo = json.loads(user_info)
     request.session['profile'] = uinfo
