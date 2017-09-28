@@ -1,6 +1,7 @@
 from urllib.parse import urlparse
 
 from auth0.v3.authentication import GetToken, Users
+from django.conf import settings
 from django.contrib.auth import authenticate, login as do_login, logout as do_logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -36,12 +37,18 @@ def callback(request):
 
 
 def login(request):
-    return render(request, "registration/login.html")
+    if not request.user.is_anonymous:
+        return redirect(settings.LOGIN_REDIRECT_URL)
+    else:
+        return render(request, "registration/login.html")
 
 
 def logout(request):
-    parsed_base_url = urlparse(AUTH0_CALLBACK_URL)
-    base_url = parsed_base_url.scheme + '://' + parsed_base_url.netloc
-    do_logout(request)
-    request.session.clear()
-    return redirect(reverse_lazy("world:map"))
+    if request.user.is_anonymous:
+        return redirect(reverse_lazy("users:login"))
+    else:
+        parsed_base_url = urlparse(AUTH0_CALLBACK_URL)
+        base_url = parsed_base_url.scheme + '://' + parsed_base_url.netloc
+        do_logout(request)
+        request.session.clear()
+        return redirect(reverse_lazy("world:map"))
