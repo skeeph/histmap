@@ -6,8 +6,9 @@ from accounts.models import Profile
 
 
 @receiver(user_signed_up)
-def create_profile(user, **kwargs):
-    user_profile = Profile.objects.create(user=user, slug=slugify('{f} {l}'.format(f=user.first_name,
-                                                                                   l=user.last_name),
-                                                                  allow_unicode=True))
-    user_profile.save()
+def create_profile(user):
+    Profile.objects.create(user=user,
+                           slug=slugify('{f} {l}'.
+                                        format(f=user.first_name,
+                                               l=user.last_name),
+                                        allow_unicode=True))

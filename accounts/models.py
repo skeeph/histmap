@@ -3,6 +3,9 @@ from django.db import models
 
 
 class Profile(models.Model):
+    """
+    User profile. One by one matching with AUTH_USER_MODEL
+    """
     user = models.OneToOneField(AUTH_USER_MODEL)
     slug = models.SlugField(allow_unicode=True, unique=True)
 

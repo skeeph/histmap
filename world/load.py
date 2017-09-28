@@ -2,7 +2,7 @@ import os
 from django.contrib.gis.utils import LayerMapping
 from .models import WorldBorder
 
-world_mapping = {
+WORLD_MAPPING = {
     'fips': 'FIPS',
     'iso2': 'ISO2',
     'iso3': 'ISO3',
@@ -17,14 +17,14 @@ world_mapping = {
     'mpoly': 'MULTIPOLYGON',
 }
 
-world_shp = os.path.abspath(
+WORLD_SHP = os.path.abspath(
     os.path.join(os.path.dirname(__file__), 'data', 'TM_WORLD_BORDERS-0.3.shp'),
 )
 
 
 def run(verbose=True):
-    lm = LayerMapping(
-        WorldBorder, world_shp, world_mapping,
+    layer_map = LayerMapping(
+        WorldBorder, WORLD_SHP, WORLD_MAPPING,
         transform=False, encoding='iso-8859-1',
     )
-    lm.save(strict=True, verbose=verbose)
+    layer_map.save(strict=True, verbose=verbose)

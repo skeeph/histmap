@@ -3,8 +3,8 @@ from django.contrib.sessions.middleware import SessionMiddleware
 from django.test import TestCase, RequestFactory
 from django.urls import reverse
 
-from ..models import Profile
 from accounts import views
+from ..models import Profile
 
 
 class TestProfile(TestCase):
@@ -74,14 +74,15 @@ class TestLogin(TestCase):
         self.assertIn(reverse("users:profile"), response._headers["location"][1])
 
 
-class TestLogout(TestCase):
-    def add_session_to_request(self, request):
-        """Annotate a request object with a session"""
-        middleware = SessionMiddleware()
-        middleware.process_request(request)
-        request.session.save()
-        return request
+def add_session_to_request(request):
+    """Annotate a request object with a session"""
+    middleware = SessionMiddleware()
+    middleware.process_request(request)
+    request.session.save()
+    return request
 
+
+class TestLogout(TestCase):
     def setUp(self):
         self.user_data = dict(
             username="testuser",
@@ -97,7 +98,7 @@ class TestLogout(TestCase):
     def test_logout(self):
         request = self.factory.get(self.url)
         request.user = self.user
-        request = self.add_session_to_request(request)
+        request = add_session_to_request(request)
         response = views.logout(request)
         self.assertEqual(response.status_code, 302)
         self.assertIn("location", response._headers)
@@ -106,7 +107,7 @@ class TestLogout(TestCase):
     def test_logout_anon(self):
         request = self.factory.get(self.url)
         request.user = AnonymousUser()
-        request = self.add_session_to_request(request)
+        request = add_session_to_request(request)
         response = views.logout(request)
         self.assertEqual(response.status_code, 302)
         self.assertIn("location", response._headers)

@@ -1,5 +1,6 @@
-from django.contrib.gis.db import models
 from datetime import date
+
+from django.contrib.gis.db import models
 
 from accounts.models import Profile
 

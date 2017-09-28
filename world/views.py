@@ -13,11 +13,11 @@ class New(views.View):
     template = 'world/new.html'
     FormClass = CountryForm
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         form = self.FormClass()
         return render(request, 'world/new.html', {'form': form})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = self.FormClass(request.POST)
         if form.is_valid():
             new_country = form.save(commit=False)

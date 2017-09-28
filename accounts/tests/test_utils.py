@@ -12,5 +12,9 @@ class UtilsTest(TestCase):
 
     def test_keys(self):
         keys = list(self.cfg.keys())
-        for i in ['AUTH0_CLIENT_ID', 'AUTH0_SECRET', 'AUTH0_DOMAIN', 'AUTH0_CALLBACK_URL', 'AUTH0_SUCCESS_URL']:
+        for i in ['AUTH0_CLIENT_ID',
+                  'AUTH0_SECRET',
+                  'AUTH0_DOMAIN',
+                  'AUTH0_CALLBACK_URL',
+                  'AUTH0_SUCCESS_URL']:
             self.assertIn(i, keys)

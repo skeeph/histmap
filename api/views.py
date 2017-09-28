@@ -1,9 +1,10 @@
+from datetime import datetime
+
 from rest_framework import viewsets
 from rest_framework_gis.pagination import GeoJsonPagination
 
 import api.serializers as serializers
 from world.models import WorldBorder
-from datetime import datetime
 
 
 class CountryGeoViewSet(viewsets.ReadOnlyModelViewSet):

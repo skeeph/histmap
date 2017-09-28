@@ -23,11 +23,13 @@ class Auth0Backend(ModelBackend):
         try:
             return UserModel.objects.get(username=username)
         except UserModel.DoesNotExist:
-            user = UserModel.objects.create(username=username, first_name=first_name, last_name = last_name)
+            user = UserModel.objects.create(username=username,
+                                            first_name=first_name,
+                                            last_name=last_name)
             user.save()
-            p = Profile.objects.create(user=user, slug=user.username)
-            p.save()
+            user_profile = Profile.objects.create(user=user, slug=user.username)
+            user_profile.save()
             return user
 
     def get_user(self, user_id):
-        return UserModel._default_manager.get(pk=user_id)
+        return UserModel.objects.get(pk=user_id)

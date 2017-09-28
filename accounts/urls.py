@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import *
+from .views import profile, login, logout, callback
 
 urlpatterns = [
     url(r'profile', profile, name='profile'),
