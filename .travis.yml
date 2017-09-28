@@ -10,6 +10,12 @@ before_script:
 env:
     - TRAVIS: True
 
+addons:
+    postgresql: "9.5"
+    apt:
+     packages:
+     - postgresql-9.5-postgis-2.3
+
 install:
   - pip install -r requirements.txt
 
