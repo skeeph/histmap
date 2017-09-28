@@ -1,10 +1,11 @@
+import json
+
 from auth0.v3.authentication import GetToken, Users
 from django.conf import settings
 from django.contrib.auth import authenticate, login as do_login, logout as do_logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from flask import json
 
 from accounts.models import Profile
 from geodjango.components.auth0 import AUTH0_DOMAIN, AUTH0_CLIENT_ID, \
