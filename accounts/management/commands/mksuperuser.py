@@ -1,5 +1,8 @@
 from django.contrib.auth.models import User
 from django.core.management import BaseCommand
+from django.utils.text import slugify
+
+from accounts.models import Profile
 
 
 class Command(BaseCommand):
@@ -16,4 +19,9 @@ class Command(BaseCommand):
             u.is_superuser = True
             u.is_staff = True
             u.save()
+            Profile.objects.create(user=u,
+                                   slug=slugify('{f} {l}'.
+                                                format(f=u.first_name,
+                                                       l=u.last_name),
+                                                allow_unicode=True))
             self.stdout.write("Superuser created!. Don't forget to change password")

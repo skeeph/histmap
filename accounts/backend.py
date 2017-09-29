@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
+from django.utils.text import slugify
 
 from accounts.models import Profile
 
@@ -27,7 +28,11 @@ class Auth0Backend(ModelBackend):
                                             first_name=first_name,
                                             last_name=last_name)
             user.save()
-            user_profile = Profile.objects.create(user=user, slug=user.username)
+            user_profile = Profile.objects.create(user=user,
+                                                  slug=slugify('{f} {l}'.
+                                                               format(f=user.first_name,
+                                                                      l=user.last_name),
+                                                               allow_unicode=True))
             user_profile.save()
             return user
 
