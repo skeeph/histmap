@@ -13,4 +13,5 @@ else
     ./manage.py loaddata world/fixtures/world.json
     touch loaded
 fi
+service nginx restart
 ./manage.py runserver 0.0.0.0:8000

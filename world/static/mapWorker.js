@@ -5,7 +5,7 @@
  * @return {string}
  */
 function API(query, year) {
-    var url = "http://localhost:8000/api/" + query + "/";
+    var url = "http://geo.khabib.me/api/" + query + "/";
     if (year) {
         url = url + "?year=" + year;
     }
