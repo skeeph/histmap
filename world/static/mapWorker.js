@@ -13,7 +13,6 @@ function API(query, year) {
 }
 
 
-
 /**
  * Отрисовка полученного массива стран и вызов функции получения следующий стран
  * @param {object} countries Geojson объекст стран
@@ -21,7 +20,8 @@ function API(query, year) {
 function handleCountries(countries) {
     postMessage(JSON.stringify(countries));
     if (countries.next) {
-        getCountriesList(countries.next);
+        // FIXME: Убрать лютый костыль. Сделать так чтобы DRF по умолчанию возвращал https
+        getCountriesList(countries.next.replace("http://", "https://"));
     } else {
         close();
     }
