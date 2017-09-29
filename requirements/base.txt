@@ -1,5 +1,4 @@
 django
-django-npm
 psycopg2
 djangorestframework
 djangorestframework-gis
