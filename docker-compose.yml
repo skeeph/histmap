@@ -3,6 +3,7 @@ version: '3'
 services:
   db:
     image: mdillon/postgis
+    restart: on-failure
     environment:
       POSTGRES_PASSWORD: "geo"
     volumes:
@@ -15,6 +16,7 @@ services:
       DBPASS: 'geo'
       DBHOST: 'db'
     build: .
+    restart: on-failure
     command: bash docker-entrypoint.sh
     volumes:
       - .:/opt/app
