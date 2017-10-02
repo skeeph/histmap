@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 from api.views import CountryGeoViewSet
 
@@ -29,4 +30,9 @@ urlpatterns = [
     url(r'^control/', admin.site.urls),
     url(r'^users/', include("accounts.urls", namespace="users")),
     url(r'^', include('world.urls', namespace='world')),
+    # JWT
+    url(r'^api-token-auth/', obtain_jwt_token),
+    url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^api-token-verify/', verify_jwt_token),
+
 ]
