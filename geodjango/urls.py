@@ -17,10 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 
-from api.views import CountryGeoViewSet, CountryViewSet
+from api.views import CountryGeoViewSet
 
 router = routers.DefaultRouter()
-router.register(r'countries', CountryViewSet)
 router.register(r'countries_geo', CountryGeoViewSet)
 
 urlpatterns = [
