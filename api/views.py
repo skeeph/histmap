@@ -5,10 +5,12 @@ from rest_framework_gis.pagination import GeoJsonPagination
 from rest_framework_extensions.cache.mixins import CacheResponseMixin
 
 import api.serializers as serializers
+from api.permissions import IsOwnerOrReadOnly
 from world.models import WorldBorder
 
 
 class CountryGeoViewSet(CacheResponseMixin, viewsets.ModelViewSet):
+    permission_classes = (IsOwnerOrReadOnly,)
     pagination_class = GeoJsonPagination
     queryset = WorldBorder.objects.filter(startyear__year__lte=datetime.now().year,
                                           endyear__year__gte=datetime.now().year,
