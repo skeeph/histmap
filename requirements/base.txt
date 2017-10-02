@@ -10,3 +10,4 @@ django-split-settings>=0.2.5
 auth0-python==3.1.2
 python-memcached==1.58
 django-admin-honeypot==1.0.0
+uwsgi
