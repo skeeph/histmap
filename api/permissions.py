@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from rest_framework import permissions
 
 
@@ -14,4 +15,6 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
 
         # Instance must have an attribute named `owner`.
+        if request.user.is_anonymous():
+            return False
         return obj.creator == request.user.profile
