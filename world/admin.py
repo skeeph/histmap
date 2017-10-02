@@ -7,6 +7,7 @@ class CountryAdmin(gisadmin.OSMGeoAdmin):
         super(CountryAdmin, self).__init__(*args, **kwargs)
 
     list_filter = ('published',)
+    search_fields = ('name', )
 
 
 gisadmin.site.register(WorldBorder, CountryAdmin)
