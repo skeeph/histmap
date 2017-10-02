@@ -11,6 +11,6 @@ RUN cd /opt/app && pip install -r requirements.txt
 RUN apt-get purge -y build-essential && apt-get autoremove -y
 
 COPY deploy /opt/app/deploy
-RUN cp /opt/app/nginx/deploy/geo_nginx.conf /etc/nginx/sites-enabled/
+RUN cp /opt/app/deploy/geo_nginx.conf /etc/nginx/sites-enabled/
 
 WORKDIR /opt/app
