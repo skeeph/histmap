@@ -2,12 +2,13 @@ from datetime import datetime
 
 from rest_framework import viewsets
 from rest_framework_gis.pagination import GeoJsonPagination
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
 
 import api.serializers as serializers
 from world.models import WorldBorder
 
 
-class CountryGeoViewSet(viewsets.ReadOnlyModelViewSet):
+class CountryGeoViewSet(CacheResponseMixin, viewsets.ReadOnlyModelViewSet):
     pagination_class = GeoJsonPagination
     queryset = WorldBorder.objects.filter(startyear__year__lte=datetime.now().year,
                                           endyear__year__gte=datetime.now().year,
@@ -22,7 +23,7 @@ class CountryGeoViewSet(viewsets.ReadOnlyModelViewSet):
         return queryset
 
 
-class CountryViewSet(viewsets.ReadOnlyModelViewSet):
+class CountryViewSet(CacheResponseMixin, viewsets.ReadOnlyModelViewSet):
     queryset = WorldBorder.objects.filter(startyear__year__lte=datetime.now().year,
                                           endyear__year__gte=datetime.now().year,
                                           published=True).order_by('startyear')
