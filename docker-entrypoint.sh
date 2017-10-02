@@ -10,8 +10,9 @@ if [ -e loaded ]
 then
     echo "Fixtures've been already loaded"
 else
-    ./manage.py loaddata world/fixtures/world.json
+    ./manage.py loaddata world/fixtures/world.yaml
     touch loaded
 fi
 service nginx restart
-./manage.py runserver 0.0.0.0:8000
+uwsgi --ini deploy/uwsgi.ini
+#./manage.py runserver 0.0.0.0:8000
