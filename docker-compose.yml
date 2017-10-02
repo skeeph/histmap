@@ -9,6 +9,9 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
 
+  memcached:
+    image: memcached:alpine
+
   web:
     environment:
       DBNAME: postgres
