@@ -26,7 +26,8 @@ router.register(r'countries_geo', CountryGeoViewSet)
 urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    url(r'^control/', admin.site.urls),
     url(r'^users/', include("accounts.urls", namespace="users")),
     url(r'^', include('world.urls', namespace='world')),
 ]

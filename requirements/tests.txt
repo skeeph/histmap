@@ -1,5 +1,5 @@
 -r base.txt
 
-coverage
-pylint
-pylint-django
+coverage==4.3.4
+pylint==1.7.2
+pylint-django==0.7.2
